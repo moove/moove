@@ -1,0 +1,658 @@
+/******************************************
+ *** Cronos Business Services Composition
+ *** Content scale down & Menubar right ***
+ ******************************************/
+/* Basic reset css based on : http://meyerweb.com/eric/tools/css/reset/ */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+strong,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+article,
+aside,
+footer,
+header,
+nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+body {
+  font-family: sans-serif;
+  font-weight: 400;
+  color: #232323;
+  background: #454545;
+}
+
+header#navbar {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 70px;
+  padding: 10px 0;
+  background: transparent;
+}
+
+header#navbar.scroll {
+  background: #fff;
+  box-shadow: 0 0 3px #aaa;
+}
+
+header#navbar .navbar-header {
+  width: 100%;
+}
+
+header#navbar .logo {
+  float: left;
+  height: 50px;
+  margin: 0;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+header#navbar .logo img {
+  width: auto;
+  height: 100%;
+}
+
+header#navbar .name {
+  float: left;
+  margin-top: 3px;
+  margin-right: 5px;
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #232323;
+}
+
+/* Region header top right */
+header#navbar .navbar-collapse {
+  float: right;
+  margin-top: 8px;
+  margin-right: 50px;
+  padding: 0!important;
+}
+
+header#navbar .navbar-collapse li {
+  float: left;
+  padding: 0;
+  margin-right: 10px;
+  list-style: none;
+}
+
+header#navbar .navbar-collapse li a {
+  padding: 10px 7px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #232323;
+}
+
+header#navbar .navbar-collapse li a:hover {
+/* reset bootstrap */
+  background: none!important;
+}
+
+/* Toggle menubar button */
+button#toggle {
+  z-index: 120;
+  position: fixed;
+  top: 18px;
+  right: 10vw;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button#toggle span {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #232323;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+button#toggle span#burger-sesame-bread {
+  top: 13px;
+}
+
+button#toggle span#burger-meat {
+  top: 19px;
+}
+
+button#toggle span#burger-bread {
+  top: 25px;
+}
+
+button#toggle.on span {
+  background: #fff;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+button#toggle.on span#burger-sesame-bread {
+  top: 19px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+button#toggle.on span#burger-meat {
+  display: none;
+}
+
+button#toggle.on span#burger-bread {
+  top: 19px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/* Region menubar */
+#menubar {
+  z-index: 110;
+  position: fixed;
+  width: 100vw;
+  max-width: 700px;
+  height: 100vh;
+  padding-top: 70px;
+  top: 0;
+  right: -700px;
+  background: #232323;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+#menubar:before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background: #232323;
+  -webkit-transform: skew(-4deg);
+  -moz-transform: skew(-4deg);
+  -ms-transform: skew(-4deg);
+  -o-transform: skew(-4deg);
+  transform: skew(-4deg);
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+#menubar.on {
+  right: 0;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+#menubar.on:before {
+  right: 480px;
+  -webkit-transform: skew(-8deg);
+  -moz-transform: skew(-8deg);
+  -ms-transform: skew(-8deg);
+  -o-transform: skew(-8deg);
+  transform: skew(-8deg);
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+#menubar .block {
+  position: relative;
+  float: right;
+  width: auto;
+  min-width: 60%;
+  max-width: 80%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 10.7vw;
+  color: #fff!important;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 30px;
+}
+
+/* Basic style for all menus in the menubar */
+#menubar .block-menu ul {
+  width: 100%;
+}
+
+#menubar .block-menu ul .leaf {
+  float: left;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 4px 0;
+  list-style: none!important;
+}
+
+#menubar .block-menu ul .leaf.on {
+  -webkit-animation: fadeIn .3s;
+  -moz-animation: fadeIn .3s;
+  -ms-animation: fadeIn .3s;
+  -o-animation: fadeIn .3s;
+  animation: fadeIn .3s;
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  -ms-animation-fill-mode: backwards;
+  -o-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+
+/* Animation delay for the .leaf li */
+#menubar .block-menu ul .leaf.on:nth-child(1) {
+  -webkit-animation-delay: .2s;
+  -moz-animation-delay: .2s;
+  -ms-animation-delay: .2s;
+  -o-animation-delay: .2s;
+  animation-delay: .2s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(2) {
+  -webkit-animation-delay: .3s;
+  -moz-animation-delay: .3s;
+  -ms-animation-delay: .3s;
+  -o-animation-delay: .3s;
+  animation-delay: .3s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(3) {
+  -webkit-animation-delay: .4s;
+  -moz-animation-delay: .4s;
+  -ms-animation-delay: .4s;
+  -o-animation-delay: .4s;
+  animation-delay: .4s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(4) {
+  -webkit-animation-delay: .5s;
+  -moz-animation-delay: .5s;
+  -ms-animation-delay: .5s;
+  -o-animation-delay: .5s;
+  animation-delay: .5s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(5) {
+  -webkit-animation-delay: .6s;
+  -moz-animation-delay: .6s;
+  -ms-animation-delay: .6s;
+  -o-animation-delay: .6s;
+  animation-delay: .6s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(6) {
+  -webkit-animation-delay: .7s;
+  -moz-animation-delay: .7s;
+  -ms-animation-delay: .7s;
+  -o-animation-delay: .7s;
+  animation-delay: .7s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(7) {
+  -webkit-animation-delay: .8s;
+  -moz-animation-delay: .8s;
+  -ms-animation-delay: .8s;
+  -o-animation-delay: .8s;
+  animation-delay: .8s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(8) {
+  -webkit-animation-delay: .9s;
+  -moz-animation-delay: .9s;
+  -ms-animation-delay: .9s;
+  -o-animation-delay: .9s;
+  animation-delay: .9s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(9) {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -ms-animation-delay: 1s;
+  -o-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+#menubar .block-menu ul .leaf.on:nth-child(10) {
+  -webkit-animation-delay: 1.1s;
+  -moz-animation-delay: 1.1s;
+  -ms-animation-delay: 1.1s;
+  -o-animation-delay: 1.1s;
+  animation-delay: 1.1s;
+}
+
+#menubar .block-menu ul .leaf a {
+  padding: 12px 22px;
+  padding-right: 60px;
+  text-decoration: none;
+  text-align: right;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff!important;
+}
+
+#menubar .block-menu ul .leaf a:hover {
+  color: #428bca!important;
+  background: transparent!important;
+}
+
+#menubar .block-menu ul .leaf a:after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 25px;
+  right: 6px;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+#menubar .block-menu ul .leaf a:hover:after {
+  right: 15px;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+@keyframes fadeIn {
+/* Animation for the .leaf li */
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Basic style for login form in the menubar */
+#menubar #block-user-login {
+  width: 47%!important;
+  min-width: 47%!important;
+}
+
+#menubar #block-user-login .form-item {
+  float: left;
+  width: 100%;
+}
+
+#menubar #block-user-login .form-item input {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 20px 15px;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 0 0 0 3px #454545 inset;
+  box-shadow: 0 0 0 3px #454545 inset;
+  font-size: 17px;
+  color: #fff!important;
+}
+
+#menubar #block-user-login .form-item label {
+  margin-bottom: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #777!important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#menubar #block-user-login ul {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+#menubar #block-user-login ul li {
+  display: block;
+  float: left;
+  width: 50%;
+  list-style: none;
+}
+
+#menubar #block-user-login ul li a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555!important;
+}
+
+#menubar #block-user-login button {
+  display: block;
+  float: right;
+  width: 50%;
+  margin-top: 15px;
+  padding: 8px 0;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 0 0 0 3px #454545 inset;
+  box-shadow: 0 0 0 3px #454545 inset;
+  background: #454545;
+  color: #fff!important;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 0;
+}
+
+/* Basic style for login menu in the menubar */
+#menubar #block-system-user-menu {
+  position: absolute;
+  bottom: 30px;
+  right: 12vw;
+  margin-right: 0;
+}
+
+#menubar #block-system-user-menu .leaf {
+  float: right;
+  margin-right: 0;
+  margin-left: 20px;
+}
+
+#menubar #block-system-user-menu .leaf a {
+  display: block;
+  padding: 8px 14px;
+  background: transparent;
+  box-shadow: 0 0 0 3px #454545 inset;
+  text-align: center;
+  font-size: 17px;
+  color: #666!important;
+}
+
+#menubar #block-system-user-menu .leaf a:after {
+  content: none;
+}
+
+#menubar #block-system-user-menu .leaf a:hover {
+  box-shadow: 0 0 0 3px #555 inset;
+  color: #888!important;
+}
+
+/* Container for scale down the content when menubar active */
+#transform {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 170px;
+  background-color: #f4f4f4;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+#transform.on {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 105;
+  background-color: #fff;
+  opacity: .8;
+  overflow: hidden;
+  -webkit-transform: scale(0.8,0.8) translateX(-6%);
+  transform: scale(0.8,0.8) translateX(-6%);
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  #menubar.on {
+    min-height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+  }
+
+  #menubar.on:before {
+    width: 0;
+    height: 0;
+    right: -9999px;
+    -webkit-transform: skew(0deg);
+    -moz-transform: skew(0deg);
+    -ms-transform: skew(0deg);
+    -o-transform: skew(0deg);
+    transform: skew(0deg);
+  }
+
+  #menubar #block-user-login {
+    width: 80%!important;
+    min-width: 80%!important;
+  }
+
+  #menubar #block-user-login ul li {
+    float: none;
+    clear: both;
+    width: 100%;
+    text-align: center;
+  }
+
+  #menubar #block-user-login button {
+    width: 100%;
+  }
+
+  #transform.on {
+    opacity: .2;
+    -webkit-transform: scale(0.8,0.8) translateX(0);
+    transform: scale(0.8,0.8) translateX(0);
+  }
+}
+
+/* Small bootstrap style changes & fixes */
+.container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.main-container {
+  background: #fff;
+}
+
+.main-container p {
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.main-container #page-header {
+  width: auto;
+  height: auto;
+  min-height: 60px;
+  margin: -30px 20px 30px;
+  text-align: center;
+  background: #428bca;
+}
+
+.main-container #page-header p {
+  padding-top: 14px;
+  color: #fff;
+}
+
+.main-container .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.main-container .row aside,
+.main-container .row section.col-sm-12 {
+  padding: 20px;
+}
